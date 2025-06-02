@@ -1,0 +1,19 @@
+{
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "path": "cmd.exe",
+      "args": [
+        "/K",
+        "set DOTNET_CLI_UI_LANGUAGE=en"
+      ]
+    }
+  }
+}

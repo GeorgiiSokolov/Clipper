@@ -1,0 +1,26 @@
+# Build results
+src/bin/
+src/obj/
+Releases/
+
+# Installer output (optional if large or auto-generated)
+Installer/Output/
+*.iss.cache
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Revit-specific temporary files
+*.rvt~
+*.rfa~
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Rider / VS for Mac
+.idea/
+*.sln.iml

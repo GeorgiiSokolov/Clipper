@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Clipper</Name>
+    <Assembly>Clipper\Clipper.dll</Assembly>
+    <AddInId>6127407B-136A-4285-95CF-7EF0F03D9614</AddInId>
+    <FullClassName>Clipper.Loader</FullClassName>
+    <VendorId>Georgii Sokolov</VendorId>
+    <VendorDescription>Experimental software</VendorDescription>
+    <VisibilityMode>AlwaysVisible</VisibilityMode>
+  </AddIn>
+</RevitAddIns>
+
+
+<!-- Generate GUID -->

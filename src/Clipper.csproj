@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Clipper</RootNamespace>  <!-- Root namespace -->
+    <AssemblyName>Clipper</AssemblyName>    <!-- Project name -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2023\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2023\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <!-- <Reference Include="PresentationFramework" /> -->
+    <Reference Include="WindowsBase" />
+    <!-- <Reference Include="System.Drawing" /> -->
+    <EmbeddedResource Include="..\Resources\icon_32.png">
+      <LogicalName>Clipper.Resources.icon_32.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Resources\icon_16.png">
+      <LogicalName>Clipper.Resources.icon_16.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
