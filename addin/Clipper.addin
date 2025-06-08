@@ -3,10 +3,10 @@
   <AddIn Type="Application">
     <Name>Clipper</Name>
     <Assembly>Clipper\Clipper.dll</Assembly>
-    <AddInId>6127407B-136A-4285-95CF-7EF0F03D9614</AddInId>
+    <AddInId>B03D6F5B-6D3F-4ECE-863B-8036B9C971C9</AddInId>
     <FullClassName>Clipper.Loader</FullClassName>
     <VendorId>Georgii Sokolov</VendorId>
-    <VendorDescription>Experimental software</VendorDescription>
+    <VendorDescription>Experimental software developer</VendorDescription>
     <VisibilityMode>AlwaysVisible</VisibilityMode>
   </AddIn>
 </RevitAddIns>
