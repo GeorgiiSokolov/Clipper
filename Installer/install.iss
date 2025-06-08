@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Clipper"
-#define MyAppVersion "0.01 alpha"
+#define MyAppVersion "0.02 alpha"
 #define MyAppPublisher "Georgii Sokolov"
 #define MyAppURL "https://github.com/GeorgiiSokolov/Clipper"
 ;#define MyAppExeName "MyProg-x64.exe"
@@ -10,7 +10,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{5CAB6957-5076-4315-9A11-0D09382E4775}
+AppId={{B03D6F5B-6D3F-4ECE-863B-8036B9C971C9}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -23,7 +23,7 @@ CreateAppDir=no
 PrivilegesRequired=admin
 ;PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=C:\_GSV_WORK\Prog\Clipper\Releases
-OutputBaseFilename=clipper-0.01a
+OutputBaseFilename=clipper-0.02a
 SolidCompression=yes
 WizardStyle=modern
 
