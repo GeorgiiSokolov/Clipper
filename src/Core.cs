@@ -149,4 +149,28 @@ class Core
 		}
 		return bbox;
 	}
+
+	public XYZ GetClippingNormalFromNormalAndViewZ(XYZ normal, XYZ view_z)
+	{
+		double tolerance = 1e-9;
+		if (Math.Abs(normal.X) < tolerance && Math.Abs(normal.Y) < tolerance) { return normal; }
+
+		// Project both on xy
+		XYZ n_xy = new XYZ(normal.X, normal.Y, 0).Normalize();
+		XYZ vz_xy = new XYZ(view_z.X, view_z.Y, 0).Normalize();
+
+		// Determine direction using 2D cross product (Z component)
+		double crossZ = n_xy.X * vz_xy.Y - n_xy.Y * vz_xy.X;
+
+		if (crossZ >= 0)
+		{
+			// Rotate +90°: counter-clockwise
+			return new XYZ(-n_xy.Y, n_xy.X, 0);
+		}
+		else
+		{
+			// Rotate -90°: clockwise
+			return new XYZ(n_xy.Y, -n_xy.X, 0);
+		}
+	}
 }

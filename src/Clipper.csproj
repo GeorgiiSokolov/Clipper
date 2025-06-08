@@ -20,12 +20,11 @@
     <!-- <Reference Include="PresentationFramework" /> -->
     <Reference Include="WindowsBase" />
     <!-- <Reference Include="System.Drawing" /> -->
-    <EmbeddedResource Include="..\Resources\icon_32.png">
-      <LogicalName>Clipper.Resources.icon_32.png</LogicalName>
+
+    <EmbeddedResource Include="..\Resources\*.*">
+      <LogicalName>Clipper.Resources.%(Filename)%(Extension)</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\Resources\icon_16.png">
-      <LogicalName>Clipper.Resources.icon_16.png</LogicalName>
-    </EmbeddedResource>
+
   </ItemGroup>
 
 </Project>

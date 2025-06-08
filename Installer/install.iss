@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Clipper"
-#define MyAppVersion "0.01 alpha"
+#define MyAppVersion "0.02 alpha"
 #define MyAppPublisher "Georgii Sokolov"
 #define MyAppURL "https://github.com/GeorgiiSokolov/Clipper"
 ;#define MyAppExeName "MyProg-x64.exe"
@@ -10,7 +10,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{5CAB6957-5076-4315-9A11-0D09382E4775}
+AppId={{61FA20A2-1E14-4E5E-AA21-AAF3D860E29F}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -20,18 +20,22 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 CreateAppDir=no
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
-PrivilegesRequired=admin
+PrivilegesRequired=lowest
 ;PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=C:\_GSV_WORK\Prog\Clipper\Releases
-OutputBaseFilename=clipper-0.01a
+OutputBaseFilename=clipper-0.02a
 SolidCompression=yes
 WizardStyle=modern
+UninstallFilesDir={localappdata}\Autodesk\Revit\Addins\2023\Clipper\Uninstall
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "..\src\bin\Release\net48\Clipper.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2023\Clipper\"; Flags: ignoreversion
+Source: "..\src\bin\Release\net48\Clipper.dll"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2023\Clipper"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 ; Copy .addin file to Revit 2023 Addins folder
 Source: "..\addin\Clipper.addin"; DestDir: "{userappdata}\Autodesk\Revit\Addins\2023"; Flags: ignoreversion
+
+[Dirs]
+Name: "{userappdata}\Autodesk\Revit\Addins\2023"; Flags: uninsneveruninstall

@@ -18,18 +18,32 @@ public class Loader : IExternalApplication
         // Path to this DLL
         string assemblyPath = Assembly.GetExecutingAssembly().Location;
 
-        // Create a PushButton
+        // Create a PushButton for ClipAllByPlane
         PushButtonData buttonData = new PushButtonData(
             "ClipAllByPlane",              // Button internal name
-            "Clip all by plane",    // Button text on ribbon
+            "Clip all\nby plane",    // Button text on ribbon
             assemblyPath,           // Path to this DLL
             "Clipper.ClipAllByPlane"    // Full class name (namespace + class)
         );
 
         PushButton button = panel.AddItem(buttonData) as PushButton;
 
-        button.LargeImage = LoadIcon("icon_32.png");  // 32px icon
-        button.Image = LoadIcon("icon_16.png"); // 16px icon
+        button.LargeImage = LoadIcon("plane_32.png");  // 32px icon
+        button.Image = LoadIcon("plane_16.png"); // 16px icon
+
+        
+        // Create a PushButton for ClipAllByPlane
+        buttonData = new PushButtonData(
+            "ClipAllByPerpToPlane",              // Button internal name
+            "Clip all\nby normal",    // Button text on ribbon
+            assemblyPath,           // Path to this DLL
+            "Clipper.ClipAllByNormal"    // Full class name (namespace + class)
+        );
+
+        button = panel.AddItem(buttonData) as PushButton;
+
+        button.LargeImage = LoadIcon("norm_32.png");  // 32px icon
+        button.Image = LoadIcon("norm_16.png"); // 16px icon
 
         return Result.Succeeded;
     }
@@ -54,7 +68,7 @@ public class Loader : IExternalApplication
                 bitmapImage.EndInit();
                 return bitmapImage;
             }
-            // TODO: Exeption if not found.
+            // TODO: Exception if not found.
         }
 
         return null; // Return null if resource not found

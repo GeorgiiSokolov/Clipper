@@ -24,3 +24,6 @@ desktop.ini
 # Rider / VS for Mac
 .idea/
 *.sln.iml
+
+GraphSrc
+buildlog.txt
