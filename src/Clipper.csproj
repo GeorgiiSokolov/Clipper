@@ -1,13 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
     <LangVersion>latest</LangVersion>
     <RootNamespace>Clipper</RootNamespace>  <!-- Root namespace -->
     <AssemblyName>Clipper</AssemblyName>    <!-- Project name -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- Default configuration when none is specified -->
+    <Configuration>Debug_2025</Configuration>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!-- Config Revit 2023 -->
+  <PropertyGroup Condition="'$(Configuration)'=='Debug_2023' Or '$(Configuration)'=='Release_2023'">
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize Condition="'$(Configuration)'=='Release_2023'">true</Optimize>
+    <DebugType Condition="'$(Configuration)'=='Debug_2023'">full</DebugType>
+    <DebugType Condition="'$(Configuration)'=='Release_2023'">pdbonly</DebugType>
+  </PropertyGroup>
+
+  <!-- Revit 2023 references -->
+  <ItemGroup Condition="'$(Configuration)'=='Debug_2023' Or '$(Configuration)'=='Release_2023'">
     <Reference Include="RevitAPI">
       <HintPath>C:\Program Files\Autodesk\Revit 2023\RevitAPI.dll</HintPath>
       <Private>False</Private>
@@ -17,14 +30,59 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
-    <!-- <Reference Include="PresentationFramework" /> -->
     <Reference Include="WindowsBase" />
-    <!-- <Reference Include="System.Drawing" /> -->
+  </ItemGroup>
 
+  <!-- Config Revit 2024 -->
+  <PropertyGroup Condition="'$(Configuration)'=='Debug_2024' Or '$(Configuration)'=='Release_2024'">
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize Condition="'$(Configuration)'=='Release_2024'">true</Optimize>
+    <DebugType Condition="'$(Configuration)'=='Debug_2024'">full</DebugType>
+    <DebugType Condition="'$(Configuration)'=='Release_2024'">pdbonly</DebugType>
+  </PropertyGroup>
+
+  <!-- Revit 2024 references -->
+  <ItemGroup Condition="'$(Configuration)'=='Debug_2024' Or '$(Configuration)'=='Release_2024'">
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2024\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2024\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <!-- Config Revit 2025 -->
+  <PropertyGroup Condition="'$(Configuration)'=='Debug_2025' Or '$(Configuration)'=='Release_2025'">
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize Condition="'$(Configuration)'=='Release_2025'">true</Optimize>
+    <DebugType Condition="'$(Configuration)'=='Debug_2025'">full</DebugType>
+    <DebugType Condition="'$(Configuration)'=='Release_2025'">pdbonly</DebugType>
+  </PropertyGroup>
+
+  <!-- Revit 2025 references -->
+  <ItemGroup Condition="'$(Configuration)'=='Debug_2025' Or '$(Configuration)'=='Release_2025'">
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2025\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="..\Resources\*.*">
       <LogicalName>Clipper.Resources.%(Filename)%(Extension)</LogicalName>
     </EmbeddedResource>
-
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 # Build results
 src/bin/
 src/obj/
+bin/
 Releases/
 
 # Installer output (optional if large or auto-generated)
