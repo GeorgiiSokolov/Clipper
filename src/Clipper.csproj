@@ -65,6 +65,7 @@
     <Optimize Condition="'$(Configuration)'=='Release_2025'">true</Optimize>
     <DebugType Condition="'$(Configuration)'=='Debug_2025'">full</DebugType>
     <DebugType Condition="'$(Configuration)'=='Release_2025'">pdbonly</DebugType>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
 
   <!-- Revit 2025 references -->
