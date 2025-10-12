@@ -1,0 +1,3 @@
+0. Prepare a deeper description with an demo.
+1. Support for family geometry.
+2. Add icon for the installer.

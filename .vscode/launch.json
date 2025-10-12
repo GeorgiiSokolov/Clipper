@@ -1,14 +1,14 @@
 
   {
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"configurations": [
 	  {
 		"name": "Launch Revit",
-		"type": "clr",
+		"type": "coreclr",
 		"request": "launch",
-		"program": "C:\\Program Files\\Autodesk\\Revit 2023\\Revit.exe",
+		"program": "C:\\Program Files\\Autodesk\\Revit 2025\\Revit.exe",
 		"args": [],
-		"cwd": "C:\\Program Files\\Autodesk\\Revit 2023\\",
+		"cwd": "C:\\Program Files\\Autodesk\\Revit 2025\\",
 		"console": "internalConsole"
 	  }
 	]

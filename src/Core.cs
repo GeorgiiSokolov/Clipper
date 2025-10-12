@@ -43,7 +43,7 @@ class Core
 	}
 
 	// Find box through all elements in view (Revit)
-	public BoundingBoxXYZ MakeBBoxForAllElemInAV()
+/* 	public BoundingBoxXYZ MakeBBoxForAllElemInAV_old()
 	{
 		XYZ bbmin = new(float.MaxValue, float.MaxValue, float.MaxValue);
 		XYZ bbmax = new(float.MinValue, float.MinValue, float.MinValue);
@@ -86,24 +86,55 @@ class Core
 			catch
 			{
 
-				//	TODO: Some elements might not support get_BoundingBox()
+			
 
 			}
 		}
 
 		BoundingBoxXYZ bbox = new() { Min = bbmin, Max = bbmax };
 		return bbox;
+	} */
+
+	public BoundingBoxXYZ MakeBBoxForAllElemInAV()
+	{
+		BoundingBoxXYZ bbox = null;
+		View activeView = doc.ActiveView;
+
+		if (activeView is View3D view3D)
+		{
+			TrContext.Run(doc, tx =>
+			{
+				view3D.IsSectionBoxActive = false;
+			}, "View section box off.");
+
+			TrContext.Run(doc, tx =>
+			{
+				view3D.IsSectionBoxActive = true;			
+			}, "View section box on.");
+
+			bbox = view3D.GetSectionBox();
+			XYZ old_origin = bbox.Transform.Origin;
+			bbox.Transform.Origin = XYZ.Zero;
+			bbox.Max += old_origin;
+			bbox.Min += old_origin;
+		}
+
+		return bbox;
 	}
 
 	public BoundingBoxXYZ ClipSpaceByPointAndNormal(BoundingBoxXYZ bbox, XYZ p, XYZ n)
 	{
+		BoundingBoxXYZ bbox_new = new BoundingBoxXYZ();
+
 		if (n.IsAlmostEqualTo(new XYZ(0, 0, 1)))
 		{
-			bbox.Max = new XYZ(bbox.Max.X, bbox.Max.Y, p.Z);
+			bbox_new.Max = new XYZ(bbox.Max.X, bbox.Max.Y, p.Z);
+			bbox_new.Min = bbox.Min;
 		}
 		else if (n.IsAlmostEqualTo(new XYZ(0, 0, -1)))
 		{
-			bbox.Min = new XYZ(bbox.Min.X, bbox.Min.Y, p.Z);
+			bbox_new.Min = new XYZ(bbox.Min.X, bbox.Min.Y, p.Z);
+			bbox_new.Max = bbox.Max;
 		}
 		else
 		{
@@ -140,13 +171,14 @@ class Core
 			double[] xs = bpts_ns.Select(pt => pt.X).ToArray();
 			double[] ys = bpts_ns.Select(pt => pt.Y).ToArray();
 
-			BoundingBoxXYZ bbox_new = new BoundingBoxXYZ();
+
 			bbox_new.Min = new XYZ(xs.Min(), p_ns.Y, bbox.Min.Z);
 			bbox_new.Max = new XYZ(xs.Max(), ys.Max(), bbox.Max.Z);
 			bbox_new.Transform = transform_n;
 
-			bbox = bbox_new;
+
 		}
+		bbox = bbox_new;
 		return bbox;
 	}
 
